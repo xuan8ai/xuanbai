@@ -1,1 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加视口设置 -->
+    <title>关键字搜索和滚动通知栏</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        input[type="text"] {
+            width: 80%;
+            max-width: 500px; /* 设置最大宽度 */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        textarea#outputBox {
+            width: 80%;
+            max-width: 500px; /* 设置最大宽度 */
+            height: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            resize: vertical;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            background-color: #fff;
+        }
+        #notification-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 9999;
+            font-weight: bold;
+            font-size: large;
+        }
+        .marquee {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            color: #666;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
+        }
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10000;
+        }
+        #uptime {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #666;
+        }
 
+        /* 添加媒体查询以适应不同屏幕尺寸 */
+        @media (max-width: 600px) {
+            input[type="text"], textarea#outputBox {
+                width: 90%;
+                max-width: none; /* 移除最大宽度限制 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="theme-toggle">☀️</div>
+    <div id="notification-bar">
+        <div class="marquee" id="notification-content"></div>
+    </div>
+    <input type="text" id="keywordInput" placeholder="请输入关键字...">
+    <button onclick="searchKeyword()">搜索</button>
+    <textarea id="outputBox" readonly></textarea>
+    <div id="footer">
+        <div id="uptime"></div>
+        隼目安全版权所有 &copy; 2024
+    </div>
+    <script>
+        var isDarkMode = false;
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.style.backgroundColor = isDarkMode ? '#333' : '#f8f8f8';
+            document.body.style.color = isDarkMode ? 'white' : '#333';
+            document.getElementById('notification-bar').style.backgroundColor = isDarkMode ? '#333' : '#f8f8f8';
+            document.getElementById('notification-bar').style.color = isDarkMode ? 'white' : '#333';
+            document.getElementById('theme-toggle').style.backgroundColor = isDarkMode ? 'white' : '#333';
+            document.getElementById('theme-toggle').innerText = isDarkMode ? '☀️' : '🌙';
+        }
+        function showNotification() {
+            fetch('gonggao.txt')
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('notification-content').innerText = text;
+                })
+                .catch(error => {
+                    console.error('Failed to load notification.', error);
+                });
+        }
+        function searchKeyword() {
+            var keyword = document.getElementById('keywordInput').value;
+            document.getElementById('outputBox').value = '';
+            fetch('1+x.txt')
+                .then(response => response.text())
+                .then(text => {
+                    var lines = text.split('\n');
+                    for (var line of lines) {
+                        if (line.includes(keyword)) {
+                            document.getElementById('outputBox').value += line + '\n';
+                            document.getElementById('outputBox').value += '——————\n';
+                        }
+                    }
+                })
+                .catch(error => {
+                    alert('读取文件失败。');
+                });
+        }
+        function showUptime() {
+            var startTime = new Date('2024-06-16T13:32:51Z');
+            var now = new Date();
+            var diff = now - startTime;
+            var hours = Math.floor(diff / (1000 * 60 * 60));
+            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('uptime').textContent = '本站已运行: ' + hours + ' 小时 ' + minutes + ' 分钟 ' + seconds + ' 秒';
+        }
+        window.onload = function() {
+            showNotification();
+            showUptime();
+            setInterval(showUptime, 1000);
+            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+        };
+    </script>
+</body>
+</html>
