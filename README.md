@@ -25,14 +25,12 @@ https://xuan8ai.github.io/xuanbai/1+x/1+x题库-隼目安全_1.5.0.apk <br>
 本仓库由xuan8ai建设，二开或移植请联系:xuan8ai666@gmail.com
 
 ## 贡献者
-<a href="https://github.com/xuan8ai">
-  <img src="https://avatars.githubusercontent.com/u/173129827?s=96&v=4" />
-xuan8ai
-</a>
 
 贡献者  | 昵称  | 贡献内容
  ---- | ----- | ------  
-  <img src="https://avatars.githubusercontent.com/u/173129827?s=96&v=4" /> | xuan8ai | 基本框架与题库 
+  <img <a href="https://github.com/xuan8ai">
+  <img src="https://avatars.githubusercontent.com/u/173129827?s=96&v=4" />
+</a> | xuan8ai | 基本框架与题库 
  单元格内容  | 单元格内容 | 单元格内容  
 
 欢迎关注"隼目安全"微信公众号
