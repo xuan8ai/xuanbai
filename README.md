@@ -29,7 +29,7 @@ https://xuan8ai.github.io/xuanbai/1+x/1+x题库-隼目安全_1.5.0.apk <br>
 
 贡献者  | 昵称  | 贡献内容
  ---- | ----- | ------  
-<img src="https://q.qlogo.cn/g?b=qq&s=100&nk=259470954" />| xuan8ai | 网页版本的前端框架与安卓版本、题库
+<img src="https://q.qlogo.cn/g?b=qq&s=100&nk=2594709540" />| xuan8ai | 网页版本的前端框架与安卓版本、题库
 
 欢迎关注"隼目安全"微信公众号
 -----
