@@ -22,8 +22,7 @@ https://xuan8ai.github.io/xuanbai/1+x/1+x题库-隼目安全_1.5.0.apk <br>
 
 [访问文章](https://mp.weixin.qq.com/s/dEq-M6E2wRFokujKQzBlMw)
 
-本仓库由xuan8ai建设，二开或移植请联系:xuan8ai666@gmail.com
-
+本仓库由xuan8ai建设，二开或移植请联系:2594709540@qq.com
 ## 贡献者
 
 贡献者  | 昵称  | 贡献内容
