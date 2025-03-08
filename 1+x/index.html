@@ -245,6 +245,16 @@ z-index: 10000;
 </style>
 
 
+<script type="text/javascript">
+    document.onkeydown = function () {
+        if (window.event && window.event.keyCode == 123) {
+            event.keyCode = 0;
+            event.returnValue = false;
+            return false;
+        }
+    };
+</script>
+
 
 <SCRIPT language=JavaScript> 
  
@@ -283,7 +293,7 @@ return " ";
 } 
  
 document.write(password()); 
- 
+
 </SCRIPT>
 
 
@@ -412,7 +422,6 @@ function hideDonationQR() {
     document.getElementById('donation-qr').style.display = 'none';
     document.getElementById('donation-overlay').style.display = 'none';
 }
-// ...existing code...
 
 
 </script>
