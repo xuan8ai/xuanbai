@@ -5,8 +5,6 @@
 
 目前题库累计题目与答案数量:2485条
 
-<h2>tips：新增卡密功能，需添加微信:Attack-Xuan8ai获取卡密，输入密码后才可使用(仅需一元)，未经允许禁止倒卖</h2>
-
 网页版可直接访问:<br>
 https://xuan8ai.github.io/xuanbai/1+x/<br>
 
